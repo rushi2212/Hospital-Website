@@ -114,7 +114,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="bg-linear-to-br from-green-50 via-emerald-50 to-teal-50 py-12 md:py-16"
+      className="bg-linear-to-br from-green-50 via-emerald-50 to-teal-50 py-12 md:py-16 overflow-hidden"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         {/* Title */}
@@ -210,12 +210,12 @@ const About = () => {
           <div className="lg:col-span-5 order-first lg:order-last flex flex-col">
             <div className="space-y-6 flex flex-col h-full">
               {/* Profile Image - Creative Enhanced Display */}
-              <div className="flex justify-center grow items-center">
+              <div className="flex justify-center grow items-center overflow-hidden">
                 <div className="relative w-full max-w-sm md:max-w-md mx-auto">
                   {/* Animated Background Gradient Circles */}
-                  <div className="absolute -top-8 -left-8 w-32 h-32 bg-emerald-300 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 md:w-32 md:h-32 bg-emerald-300 rounded-full blur-3xl opacity-20 animate-pulse"></div>
                   <div
-                    className="absolute -bottom-8 -right-8 w-32 h-32 bg-teal-300 rounded-full blur-3xl opacity-20 animate-pulse"
+                    className="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-1/2 w-24 h-24 md:w-32 md:h-32 bg-teal-300 rounded-full blur-3xl opacity-20 animate-pulse"
                     style={{ animationDelay: "1s" }}
                   ></div>
 
