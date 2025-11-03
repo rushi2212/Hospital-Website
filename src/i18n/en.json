@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "treatments": "Treatments",
+    "gallery": "Gallery",
+    "reviews": "Reviews",
+    "contact": "Contact"
+  },
+  "hero": {
+    "slide1": "Complete Ayurvedic Treatment for All Types of Pains",
+    "slide2": "Ayurveda, Yoga & Panchakarma – The Path to Healthy Life",
+    "slide3": "Balance Your Beauty and Health"
+  },
+  "home": {
+    "title": "Vaidya Anuradha Deshmukh (M.D. Ayurveda)",
+    "desc": "At Dnyanesh Ayurved & Panchakarma Center, we offer complete Ayurvedic treatment for all types of body pain and health conditions. Restore your health naturally under expert guidance."
+  },
+  "footer": {
+    "rights": "All Rights Reserved | Dnyanesh Ayurved & Panchakarma Center",
+    "address": "Muktdham Complex, near Bharat Petrol Pump, Dighi, Pune"
+  }
+}
