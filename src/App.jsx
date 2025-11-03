@@ -5,9 +5,11 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import ProductsServices from "./pages/ProductsServices";
 import Reviews from "./pages/Reviews";
-import './App.css'
+import "./App.css";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
+import Payment from "./pages/Payment";
+import RateUs from "./pages/RateUs";
 
 function App() {
   return (
@@ -17,10 +19,11 @@ function App() {
         <Home />
         <About />
         <ProductsServices />
-        <Gallery/>
+        <Payment />
+        <Gallery />
+        <RateUs />
         <Reviews />
-        <Contact/>
-        
+        <Contact />
       </main>
       <Footer />
     </div>

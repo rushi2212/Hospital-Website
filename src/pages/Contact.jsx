@@ -40,8 +40,8 @@ const Contact = () => {
         </p>
 
         {/* Contact Form */}
-        <div className="max-w-4xl mx-auto bg-white/80 backdrop-blur-md shadow-xl border border-emerald-100 p-6 md:p-10 rounded-2xl">
-          <form className="grid md:grid-cols-2 gap-6">
+        <div className="max-w-4xl mx-auto bg-white/80 backdrop-blur-md shadow-xl border border-emerald-100 p-5 md:p-10 rounded-2xl">
+          <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Left side: Name, Mobile, Email */}
             <div className="space-y-5">
               {/* Name */}
@@ -110,7 +110,7 @@ const Contact = () => {
               <textarea
                 id="message"
                 name="message"
-                rows="8"
+                rows="5"
                 className="w-full border border-emerald-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 rounded-lg px-4 py-2.5 text-sm md:text-base text-gray-700 outline-none resize-none flex-grow mb-4 transition-all duration-200 hover:border-emerald-300"
                 placeholder={c.message}
                 required

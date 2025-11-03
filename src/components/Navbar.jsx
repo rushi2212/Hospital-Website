@@ -14,6 +14,7 @@ const Navbar = () => {
     { id: "home", label: t("nav.home") },
     { id: "about", label: t("nav.about") },
     { id: "products", label: t("nav.treatments") },
+    { id: "payment", label: t("nav.payment") },
     { id: "gallery", label: t("nav.gallery") },
     { id: "reviews", label: t("nav.reviews") },
     { id: "contact", label: t("nav.contact") },
@@ -35,7 +36,7 @@ const Navbar = () => {
               className="w-8 h-8 md:w-10 md:h-10 rounded-full shadow-md object-cover"
             />
             <span className="text-sm md:text-lg lg:text-xl font-bold tracking-wide line-clamp-1">
-              {i18n.language === "mr" ? "रामेष्ट आयुर्वेद" : "RAMESHTA AYURVED"}
+              {i18n.language === "mr" ? "रामेष्ट आयुर्वेद & पंचकर्म केंद्र" : "RAMESHTA AYURVED & PANCHAKARMA KENDRA"}
             </span>
           </div>
 

@@ -1,11 +1,78 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
+const ReviewCard = ({ review, expanded, onToggle }) => {
+  const isLong = review.text.length > 150;
+  const displayText = expanded
+    ? review.text
+    : review.text.slice(0, 150) + (isLong ? "..." : "");
+
+  return (
+    <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-emerald-100 overflow-hidden h-full hover:shadow-2xl transition-shadow duration-300 flex flex-col">
+      <div className="flex flex-col items-center bg-gradient-to-br from-emerald-400 to-teal-500 p-4 md:p-6">
+        <div className="relative mb-3">
+          <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-4 border-white shadow-lg">
+            <img
+              src={review.image}
+              alt={review.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="absolute -bottom-1 -right-1 bg-white rounded-full p-1.5 shadow-md">
+            <svg
+              className="w-4 h-4 text-yellow-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          </div>
+        </div>
+        <h4 className="font-bold text-white text-base md:text-lg text-center">
+          {review.name}
+        </h4>
+      </div>
+
+      <div className="p-4 md:p-6 flex flex-col flex-grow">
+        <div className="flex items-start gap-2 flex-grow">
+          <span className="text-emerald-500 text-2xl leading-none flex-shrink-0">
+            "
+          </span>
+          <p className="text-gray-700 text-sm md:text-base leading-relaxed flex-grow">
+            {displayText}
+          </p>
+        </div>
+        {isLong && (
+          <button
+            onClick={onToggle}
+            className="mt-3 text-emerald-600 font-semibold text-sm hover:text-emerald-700 transition-colors"
+          >
+            {expanded ? "Read Less" : "Read More"}
+          </button>
+        )}
+        <div className="flex gap-1 mt-4 justify-center">
+          {[...Array(5)].map((_, i) => (
+            <svg
+              key={i}
+              className="w-4 h-4 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Reviews = () => {
   const { i18n } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [cardsPerView, setCardsPerView] = useState(4);
+  const [expandedReviews, setExpandedReviews] = useState({});
 
   const c =
     i18n.language === "mr"
@@ -15,45 +82,45 @@ const Reviews = () => {
           trustBadge: "1000+ समाधानी रुग्ण",
           reviewsData: [
             {
-              name: "सीमा पाटील",
+              name: "दिनेश देशमुख",
               image: "https://i.pravatar.cc/150?img=1",
-              text: "मला गंभीर सांधेदुखीची समस्या होती. वैद्य अनुराधा देशमुख यांच्या पंचकर्म उपचारांनी माझ्या जीवनात मोठा बदल घडवला. आता मी पूर्णपणे वेदनामुक्त आहे!"
+              text: "डॉ. अनुराधा देशमुखांच्या कौशल्याने मी पूर्णपणे मोहित झालो! ५ वर्षे कटू सायाटिका वेदनेमुळे त्रस्त होऊन मी शेवटचा प्रयत्न म्हणून डॉ. अनुराधा देशमुखांकडे गेलो. त्यांचे सखोल विश्लेषण आणि व्यक्तिगत उपचारामुळे माझे वेदन नाटकीयरित्या कमी झाले - १० मधून १ किंवा २ पर्यंत! एक सल्ला पुरेसा होता. तीव्र वेदनामुक्तीसाठी अत्यंत शिफारस करते. धन्यवाद, डॉ. अनुराधा देशमुख!",
             },
             {
-              name: "अमोल देशमुख",
+              name: "आदेश बोरहडे",
               image: "https://i.pravatar.cc/150?img=12",
-              text: "मधुमेह आणि रक्तदाब नियंत्रणासाठी मी येथे उपचार घेतले. डॉक्टरांच्या मार्गदर्शनाने माझी प्रकृती आश्चर्यकारकपणे सुधारली आहे."
+              text: "डॉक्टर खरोखरच छान होती आणि छान सल्ला दिला. डॉक्टरचे परिणाम अत्यंत उत्कृष्ट आहेत.",
             },
             {
-              name: "रेणुका जोशी",
+              name: "श्वेता वासु",
               image: "https://i.pravatar.cc/150?img=5",
-              text: "PCOD च्या समस्येवर उत्तम उपचार मिळाले. डॉक्टर खूप काळजीपूर्वक सर्व गोष्टी समजावून सांगतात. संपूर्णपणे समाधानी आहे!"
+              text: "सर्वप्रथम मी तिला ५ ताऱ्यापेक्षा जास्त रेटिंग देऊ शकलो असते. ती अनंत तारकांच्या योग्य आहे. ती आमच्या जीवनात एक देवदूत आहे. ती अत्यंत मैत्रीपूर्ण डॉक्टर आणि मी पाहिलेली सर्वोत्तम डॉक्टरांपैकी एक आहे. सर्व चिंता ऐकते आणि सर्वकाही समजण्यायोग्य भाषेत समजावून सांगते. ती अत्यंत प्रामाणिक आहे, रुग्णांसाठी करुणामय आणि महान विनम्रतेने भरलेली आहे! उत्तम डॉक्टर आणि उत्तम उपचार, स्टाफ देखील छान आहे. तुम्ही प्रदान केलेल्या असाधारण सहायतेबद्दल मी कृतज्ञ आहे. धन्यवाद रुग्ण काळजीसाठी तुमच्या निरंतर समर्पणासाठी. मी सर्वांना तिची शिफारस करते.",
             },
             {
-              name: "राजेश कुलकर्णी",
-              image: "https://i.pravatar.cc/150?img=13",
-              text: "माझ्या मुलाला जुनाट खोकल्याची समस्या होती. येथील आयुर्वेदिक उपचारांमुळे त्याची प्रकृती पूर्णपणे बरी झाली."
-            },
-            {
-              name: "प्रिया शर्मा",
+              name: "गीता पाटील",
               image: "https://i.pravatar.cc/150?img=9",
-              text: "त्वचेच्या समस्यांसाठी अनेक ठिकाणी उपचार घेतले पण येथे मिळालेल्या आयुर्वेदिक उपचारांनी खरोखर चमत्कार केला!"
+              text: "डॉ. अनुराधा मॅम अत्यंत मैत्रीपूर्ण आहेत आणि शांतीपूर्वक आमच्या समस्यांना ऐकतात. मी पंचकर्म उपचार बस्ती ८ दिवस केली आहे. आता मी अत्यंत आरामदायक अनुभव करत आहे. अत्यंत छान अनुभव. धन्यवाद मॅम.",
             },
             {
-              name: "संदीप वाघमारे",
+              name: "ज्योती चव्हाण",
               image: "https://i.pravatar.cc/150?img=14",
-              text: "मणक्याच्या दुखण्यावर स्नेहन आणि स्वेदन उपचार घेतले. परिणाम अप्रतिम आहेत. अतिशय व्यावसायिक सेवा!"
+              text: "मी प्रसवानंतर केसांचे गिरणे समस्येसाठी डॉक्टरांकडे गेलो. मला मोठ्या प्रमाणात केस गळत आहेत. मी बरेच उपचार केले पण कोणताही परिणाम नाही. जेव्हा मी डॉक्टर अनुराधाकडे गेलो तेव्हा मी उपचारांसाठी माझा विश्वास पूर्णपणे गमावला, पण तिने माझा विश्वास परत केला. अत्यंत छान आणि शांतीपूर्वक ती मेरे सल्लामसलतीची केली. माझा उपचार सुरू केला आता मी तिच्या उपचारांचा आनंद घेत आहे. केस गिरणे समस्या नाही तसेच माझ्या केसांची रचना सुधारली आहे. धन्यवाद डॉक्टर. अत्यंत शिफारस करते.",
             },
             {
-              name: "माया पवार",
+              name: "एन मोहोड",
               image: "https://i.pravatar.cc/150?img=20",
-              text: "मासिक पाळीच्या अनियमिततेवर उत्कृष्ट उपचार मिळाले. डॉक्टर अत्यंत धैर्यवान आणि कुशल आहेत."
+              text: "अत्यंत अनुभवी आणि छान मानसिकतेची डॉक्टर.....",
             },
             {
-              name: "विक्रम जाधव",
+              name: "गजानन देशमुख",
               image: "https://i.pravatar.cc/150?img=15",
-              text: "आम्लपित्ताच्या तक्रारीवर घरगुती उपचार आणि औषधांनी खूप आराम मिळाला. क्लिनिकची स्वच्छता उत्तम आहे!"
-            }
+              text: "सर्वोत्तम आयुर्वेद डॉक्टर, या लॉकडाउनच्या काळात वृद्ध लोकांना खूप कष्ट होत आहेत, घरी बसले आहेत त्यांना पायांमध्ये सूज समस्या येत आहे. डॉ. अनुराधा यांनी योग्य आहार आणि औषध दिले, ते खरोखर काम करते आहे लॉकडाउनच्या काळात आणि माझ्या पित्यांची पूर्णपणे बरे झाले. अतिशय धन्यवाद. आम्लपित्त हा लॉकडाउनच्या काळात एक मोठी समस्या आहे. डॉक्टरांनी योग्य आहार आणि औषध दिले आणि मला राहत मिळाली. खरोखरच हे सर्वोत्तम आहे आणि आम्ही आम्लपित्त नियंत्रित केले आहे. अतिशय धन्यवाद.",
+            },
+            {
+              name: "प्रीती सोनार",
+              image: "https://i.pravatar.cc/150?img=2",
+              text: "सर्वोत्तम आयुर्वेद डॉक्टर, मी २१ वर्षे आहे, मला मागील २ वर्षात PCOD आणि PCOS समस्या होत आहे. या २ वर्षांत मी अनेक डॉक्टरांकडे गेलो पण मला कोणताही सकारात्मक प्रतिक्रिया आणि परिणाम मिळाले नाहीत. मी अत्यंत निराश, उदास होऊन गेलो, त्या परिस्थितीत मला काय करायचे हे समजले नाही. तेव्हा मी अनुराधा मॅमला भेटलो आणि माझ्या समस्यांबद्दल सांगितले आणि ज्या पद्धतीने ती मेरे सल्लामसलतीची करते आणि माझ्या समस्या समजते हे अत्यंत आश्चर्यकारक आहे, तिच्या सल्ल्यानंतर मी माझा निराशावाद, नकारात्मक विचार पूर्णपणे गमावला. मी ६ महिने उपचार केले आणि PCOD समस्येत द्रुत परिणाम दिसले. आता मला कोणतीही मासिक समस्या नाही. आणि मागील ५ महिन्यांत माझे मासिक पाळी सामान्य आणि नियमित आहे. अत्यंत धन्यवाद.....",
+            },
           ],
         }
       : {
@@ -62,45 +129,45 @@ const Reviews = () => {
           trustBadge: "1000+ Satisfied Patients",
           reviewsData: [
             {
-              name: "Seema Patil",
+              name: "Dinesh Deshmukh",
               image: "https://i.pravatar.cc/150?img=1",
-              text: "I was suffering from severe joint pain. Dr. Anuradha Deshmukh's Panchakarma therapy transformed my life. I'm completely pain-free now!"
+              text: "I'm blown away by Dr. Anuradhaa Deshmukh's expertise! After suffering from excruciating sciatica pain for 5 years, I consulted Dr. Anuradhaa Deshmukh as a last resort. With a thorough analysis and personalized treatment, I'm thrilled to report that the pain has reduced dramatically - from a 10 to a 1 or 2! A single consultation was all it took. Highly recommended for natural and effective relief from chronic pain. Thank you, Dr. Anuradhaa Deshmukh 🙏💯",
             },
             {
-              name: "Amol Deshmukh",
+              name: "Adesh Borhade",
               image: "https://i.pravatar.cc/150?img=12",
-              text: "I came here for diabetes and blood pressure management. Under the doctor's guidance, my health has improved remarkably."
+              text: "Doctor was really nice and give good advice. And results of doctor is absolutely fantastic.",
             },
             {
-              name: "Renuka Joshi",
+              name: "Shweta Vasu",
               image: "https://i.pravatar.cc/150?img=5",
-              text: "Received excellent treatment for PCOD. The doctor explains everything with great care. Completely satisfied with the service!"
+              text: "First of all, I wish I could give her more than 5 stars. She is worth infinite stars⭐. She is an angel in our life. She is a very friendly doctor & one of the finest doctors I have seen. Hears all your concerns and explains you everything in understandable terms. She is very honest, full of compassion for her patients with great humility! Great doctor and great treatment, And Staff is also good. I am grateful for the exceptional support you provided during my time at your hospital. Thank you for your unwavering dedication to patient care. I highly recommend her to everyone.",
             },
             {
-              name: "Rajesh Kulkarni",
-              image: "https://i.pravatar.cc/150?img=13",
-              text: "My son had chronic cough issues. The Ayurvedic treatment here completely cured his condition. Highly recommended!"
-            },
-            {
-              name: "Priya Sharma",
+              name: "Geeta Patil",
               image: "https://i.pravatar.cc/150?img=9",
-              text: "Tried many places for skin problems but the Ayurvedic treatment here truly worked like magic! Amazing results."
+              text: "Dr. Anuradha mam is very friendly and calmly listen our problems. I have undergone panchkarma treatment basti for 8 days. Now I am feeling very much relaxed. Very nice experience. Thank you mam.",
             },
             {
-              name: "Sandeep Waghamare",
+              name: "Jyoti Chavan",
               image: "https://i.pravatar.cc/150?img=14",
-              text: "Underwent Snehana and Swedana therapy for spine pain. The results are outstanding. Very professional service!"
+              text: "I visited doctor for my hair fall problem. I am facing lots of hair loss after delivery. I did lots of treatment but no results. When I visited to doctor anuradha I completely lost my faith for treatments, but she regaines my trust. Very nice and calmly she consult me. Started with my treatment now I am happy with her treatment. Not having hair loss problem also due to her oil therapies structure of my hairs are also improved. Thanks doctor. Highly recommended",
             },
             {
-              name: "Maya Pawar",
+              name: "N Mohod",
               image: "https://i.pravatar.cc/150?img=20",
-              text: "Got excellent treatment for menstrual irregularities. The doctor is extremely patient and skilled."
+              text: "Very well experienced and good nature doctor.....",
             },
             {
-              name: "Vikram Jadhav",
+              name: "Gajanan Deshmukh",
               image: "https://i.pravatar.cc/150?img=15",
-              text: "Home remedies and medicines for acidity gave me great relief. The clinic's cleanliness is excellent!"
-            }
+              text: "Best Ayurveda Doctor, during this lockdown old age people suffer lot, no movement sitting at home they face problem swell up at leg. Dr. Anuradha gave proper diet and medicine, it's really works during this lockdown and my father is really recovered from this. Thank u so much. Acidity is very big problem during this lockdown. Dr. gave proper diet and me find. Really it's best and we have controlled acidity. Thank u so much.",
+            },
+            {
+              name: "Priti Sonar",
+              image: "https://i.pravatar.cc/150?img=2",
+              text: "BEST AYURVEDA DOCTOR, i m 21 years old, i m suffering from pcod, pcos problem from last 2 year's, in this 2 years, i was going so many doctors for treatment but I don't have any positive response and result. I m so much frustrated, depressed in that situation I don't understand what should I do?? Then I meet anuradha mam talking about my problems and the way she talking with me and understand my problems is so amazing, after talking to her i understand my frustration, negative thinking actually gone..I started treatment for 6 months I see quick result in my pcod problem.. now I don't have any periods problem..And last 5 months my periods is normal and regular... Thank you so much.....",
+            },
           ],
         };
 
@@ -149,7 +216,10 @@ const Reviews = () => {
   const totalDots = Math.max(1, c.reviewsData.length - cardsPerView + 1);
 
   return (
-    <section id="reviews" className="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 py-12 md:py-16">
+    <section
+      id="reviews"
+      className="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 py-12 md:py-16"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         {/* Title */}
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-emerald-700 mb-4">
@@ -167,8 +237,18 @@ const Reviews = () => {
             className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-emerald-50 transition-colors -ml-5 md:block hidden"
             aria-label="Previous"
           >
-            <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <svg
+              className="w-6 h-6 text-emerald-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
           </button>
 
@@ -177,8 +257,18 @@ const Reviews = () => {
             className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-emerald-50 transition-colors -mr-5 md:block hidden"
             aria-label="Next"
           >
-            <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            <svg
+              className="w-6 h-6 text-emerald-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </button>
 
@@ -187,67 +277,31 @@ const Reviews = () => {
             <div
               className="flex transition-transform duration-500 ease-in-out gap-6"
               style={{
-                transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
+                transform: `translateX(-${
+                  currentIndex * (100 / cardsPerView)
+                }%)`,
               }}
             >
               {c.reviewsData.map((review, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0"
+                  className="shrink-0"
                   style={{
                     width: `calc(${100 / cardsPerView}% - ${
-                      (cardsPerView - 1) * 24 / cardsPerView
+                      ((cardsPerView - 1) * 24) / cardsPerView
                     }px)`,
                   }}
                 >
-                  <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-emerald-100 overflow-hidden h-full hover:shadow-2xl transition-shadow duration-300">
-                    <div className="flex flex-col items-center bg-gradient-to-br from-emerald-400 to-teal-500 p-4 md:p-6">
-                      <div className="relative mb-3">
-                        <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-4 border-white shadow-lg">
-                          <img
-                            src={review.image}
-                            alt={review.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div className="absolute -bottom-1 -right-1 bg-white rounded-full p-1.5 shadow-md">
-                          <svg
-                            className="w-4 h-4 text-yellow-500"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        </div>
-                      </div>
-                      <h4 className="font-bold text-white text-base md:text-lg text-center">
-                        {review.name}
-                      </h4>
-                    </div>
-
-                    <div className="p-4 md:p-6">
-                      <div className="flex items-start gap-2">
-                        <span className="text-emerald-500 text-2xl leading-none flex-shrink-0">
-                          "
-                        </span>
-                        <p className="text-gray-700 text-sm md:text-base leading-relaxed flex-grow">
-                          {review.text}
-                        </p>
-                      </div>
-                      <div className="flex gap-1 mt-4 justify-center">
-                        {[...Array(5)].map((_, i) => (
-                          <svg
-                            key={i}
-                            className="w-4 h-4 text-yellow-400"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                  <ReviewCard
+                    review={review}
+                    expanded={expandedReviews[index] || false}
+                    onToggle={() =>
+                      setExpandedReviews((prev) => ({
+                        ...prev,
+                        [index]: !prev[index],
+                      }))
+                    }
+                  />
                 </div>
               ))}
             </div>
@@ -259,16 +313,36 @@ const Reviews = () => {
               onClick={handlePrev}
               className="bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-emerald-50 transition-colors"
             >
-              <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg
+                className="w-6 h-6 text-emerald-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </button>
             <button
               onClick={handleNext}
               className="bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-emerald-50 transition-colors"
             >
-              <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg
+                className="w-6 h-6 text-emerald-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
           </div>

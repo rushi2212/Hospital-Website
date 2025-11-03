@@ -207,24 +207,59 @@ const About = () => {
           </div>
 
           {/* RIGHT SECTION - Image & OPD */}
-          <div className="lg:col-span-5 order-first lg:order-last">
-            <div className="space-y-6">
-              {/* Profile Image - Clean Display */}
-              <div className="flex justify-center">
-                <img
-                  src="/images/profileimg.jpg"
-                  alt={c.name}
-                  className="w-auto h-auto max-h-[500px] object-cover rounded-2xl shadow-2xl border-4 border-emerald-100"
-                />
+          <div className="lg:col-span-5 order-first lg:order-last flex flex-col">
+            <div className="space-y-6 flex flex-col h-full">
+              {/* Profile Image - Creative Enhanced Display */}
+              <div className="flex justify-center grow items-center">
+                <div className="relative w-full max-w-sm md:max-w-md mx-auto">
+                  {/* Animated Background Gradient Circles */}
+                  <div className="absolute -top-8 -left-8 w-32 h-32 bg-emerald-300 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+                  <div
+                    className="absolute -bottom-8 -right-8 w-32 h-32 bg-teal-300 rounded-full blur-3xl opacity-20 animate-pulse"
+                    style={{ animationDelay: "1s" }}
+                  ></div>
+
+                  {/* Main Decorative Frame */}
+                  <div className="relative aspect-3/4 mx-auto max-h-[350px] md:max-h-none">
+                    {/* Outer Gradient Border - Premium Look */}
+                    <div className="absolute -inset-4 bg-linear-to-br from-emerald-400 via-teal-400 to-emerald-400 rounded-3xl opacity-60"></div>
+
+                    {/* Middle White Border */}
+                    <div className="absolute -inset-3 bg-white rounded-3xl shadow-lg"></div>
+
+                    {/* Inner Accent Border - Emerald */}
+                    <div className="absolute -inset-2 bg-linear-to-br from-emerald-100 to-teal-100 rounded-3xl opacity-70"></div>
+
+                    {/* White Inner Frame */}
+                    <div className="absolute -inset-1 bg-white rounded-3xl"></div>
+
+                    {/* Image Container with Hover Effect */}
+                    <div className="relative w-full h-full rounded-3xl overflow-hidden group">
+                      <img
+                        src="/images/profileimg.jpg"
+                        alt={c.name}
+                        className="w-full h-full object-cover rounded-3xl shadow-2xl transition-transform duration-500 group-hover:scale-105"
+                      />
+                      {/* Overlay Gradient on Hover */}
+                      <div className="absolute inset-0 bg-linear-to-t from-emerald-900/0 via-transparent to-emerald-600/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl"></div>
+                    </div>
+
+                    {/* Decorative Corner Accents */}
+                    <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-emerald-500 rounded-tl-lg opacity-60"></div>
+                    <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-emerald-500 rounded-tr-lg opacity-60"></div>
+                    <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-teal-500 rounded-bl-lg opacity-60"></div>
+                    <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-teal-500 rounded-br-lg opacity-60"></div>
+                  </div>
+                </div>
               </div>
 
               {/* OPD Timing - Highlighted Card Below Photo */}
               <div className="bg-linear-to-r from-orange-50 to-red-50 rounded-2xl p-5 md:p-6 shadow-xl border-2 border-orange-400 hover:shadow-2xl transition-shadow duration-300">
-                <h4 className="text-lg md:text-xl font-bold text-orange-700 mb-2 flex items-center gap-2">
+                <h4 className="text-base md:text-lg font-bold text-orange-700 mb-2 flex items-center gap-2">
                   <Clock className="w-5 h-5" />
                   <span>OPD TIMING</span>
                 </h4>
-                <p className="text-base md:text-lg font-semibold text-orange-600 leading-relaxed">
+                <p className="text-sm md:text-base font-semibold text-orange-600 leading-relaxed">
                   {c.opdTiming}
                 </p>
               </div>
