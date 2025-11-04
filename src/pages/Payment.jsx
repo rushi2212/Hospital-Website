@@ -1,23 +1,24 @@
 import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { Copy, Check, CreditCard, Building2, Hash, User } from "lucide-react";
 
 const Payment = () => {
-  const { i18n } = useTranslation();
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [copiedBank, setCopiedBank] = useState(false);
+  const [language] = useState("en"); // Change to "mr" for Marathi
 
   const phoneNumber = "9920494821";
   const accountDetails = {
-    accountName: "Anuradha Vihang Deshmukh",
-    accountNumber: "",
-    ifscCode: "",
-    bankName: "Bank of Maharashtra",
-    bankBranch: "Wagholi",
+    accountName: "ANURADHA VIHANG DESHMUKH",
+    accountNumber: "50200112806470",
+    ifscCode: "HDFC0011207",
+    bankName: "HDFC Bank",
+    bankBranch: "DIGHI ALANDI ROAD PUNE",
+    accountType: "CURRENT",
+    vpa: "9920494821@hdfcbank",
   };
 
   const c =
-    i18n.language === "mr"
+    language === "mr"
       ? {
           title: "पेमेंट",
           subtitle: "ऑनलाइन पेमेंट करा",
@@ -32,6 +33,8 @@ const Payment = () => {
           ifscCode: "IFSC कोड",
           bankName: "बँकेचे नाव",
           bankBranch: "बँक शाखा",
+          accountType: "खाते प्रकार",
+          vpa: "व्हर्च्युअल पेमेंट पत्ता",
           copyBankDetails: "बँक तपशील कॉपी करा",
           bankCopied: "बँक तपशील कॉपी झाले!",
           or: "किंवा",
@@ -50,6 +53,8 @@ const Payment = () => {
           ifscCode: "IFSC Code",
           bankName: "Bank Name",
           bankBranch: "Bank Branch",
+          accountType: "Account Type",
+          vpa: "Virtual Payment Address",
           copyBankDetails: "Copy Bank Details",
           bankCopied: "Bank Details Copied!",
           or: "OR",
@@ -66,7 +71,9 @@ const Payment = () => {
 Account Number: ${accountDetails.accountNumber}
 IFSC Code: ${accountDetails.ifscCode}
 Bank Name: ${accountDetails.bankName}
-Bank Branch: ${accountDetails.bankBranch}`;
+Bank Branch: ${accountDetails.bankBranch}
+Account Type: ${accountDetails.accountType}
+Virtual Payment Address: ${accountDetails.vpa}`;
     navigator.clipboard.writeText(bankText);
     setCopiedBank(true);
     setTimeout(() => setCopiedBank(false), 2000);
@@ -75,67 +82,60 @@ Bank Branch: ${accountDetails.bankBranch}`;
   return (
     <section
       id="payment"
-      className="bg-linear-to-br from-green-50 via-emerald-50 to-teal-50 py-12 md:py-16"
+      className="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 py-10 md:py-14"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         {/* Title */}
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-emerald-700 mb-3">
+        <div className="text-center mb-6 md:mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-emerald-700 mb-2">
             {c.title}
           </h2>
-          <p className="text-lg md:text-xl text-gray-600">{c.subtitle}</p>
+          <p className="text-base md:text-lg text-gray-600">{c.subtitle}</p>
         </div>
 
         {/* Payment Options */}
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-10 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-5 md:gap-6 max-w-6xl mx-auto items-start">
           {/* LEFT SECTION - UPI Payment */}
-          <div className="bg-white/90 backdrop-blur-md rounded-3xl p-5 md:p-8 shadow-2xl border-2 border-emerald-200 hover:shadow-3xl transition-all duration-300 h-full flex flex-col">
+          <div className="bg-white/90 backdrop-blur-md rounded-xl p-5 shadow-lg border border-emerald-200 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
             <div className="text-center flex flex-col h-full">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-100 rounded-full mb-4 mx-auto">
-                <CreditCard className="w-8 h-8 text-emerald-600" />
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-emerald-100 rounded-full mb-3 mx-auto">
+                <CreditCard className="w-6 h-6 text-emerald-600" />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-emerald-700 mb-4">
+              <h3 className="text-lg md:text-xl font-bold text-emerald-700 mb-4">
                 {c.upiPayment}
               </h3>
 
-              {/* Name and Mobile */}
-              <div className="mb-4">
-                <div className="bg-emerald-50 rounded-2xl p-3 mb-3">
-                  <p className="text-xs text-gray-600 mb-0.5">
-                    {c.accountName}
-                  </p>
-                  <p className="text-lg md:text-xl font-bold text-emerald-700">
+              {/* Name and Mobile - Compact */}
+              <div className="mb-3 space-y-1.5">
+                <div className="bg-emerald-50 rounded-lg p-2">
+                  <p className="text-xs text-gray-600">{c.accountName}</p>
+                  <p className="text-sm md:text-base font-semibold text-emerald-700">
                     {accountDetails.accountName}
                   </p>
                 </div>
-                <div className="bg-emerald-50 rounded-2xl p-3">
-                  <p className="text-xs text-gray-600 mb-0.5">
-                    {c.mobileNumber}
-                  </p>
-                  <p className="text-lg md:text-xl font-bold text-emerald-700">
+                <div className="bg-emerald-50 rounded-lg p-2">
+                  <p className="text-xs text-gray-600">{c.mobileNumber}</p>
+                  <p className="text-sm md:text-base font-semibold text-emerald-700">
                     {phoneNumber}
                   </p>
                 </div>
               </div>
 
-              {/* QR Code Scanner Photo */}
-              <div className="bg-linear-to-br from-emerald-100 to-teal-100 rounded-2xl p-3 md:p-4 mb-4 min-h-[150px] md:min-h-[200px] flex items-center justify-center border-2 border-dashed border-emerald-300 grow">
+              {/* QR Code - Grows to fill space */}
+              <div className="bg-gradient-to-br from-emerald-100 to-teal-100 rounded-lg p-3 mb-3 border border-emerald-300 flex-grow flex items-center justify-center">
                 <img
                   src="https://admin.softspectra.co/storage/qr/131/1743237889.jpg"
                   alt="Payment QR Code"
-                  className="max-w-full max-h-[150px] md:max-h-[200px] rounded-xl shadow-lg"
+                  className="w-full max-w-[240px] h-auto rounded shadow-sm"
                   onError={(e) => {
                     e.target.style.display = "none";
                     e.target.nextSibling.style.display = "block";
                   }}
                 />
                 <div style={{ display: "none" }} className="text-center">
-                  <CreditCard className="w-20 h-20 text-emerald-400 mx-auto mb-4" />
-                  <p className="text-emerald-600 font-semibold text-lg mb-2">
+                  <CreditCard className="w-12 h-12 text-emerald-400 mx-auto mb-2" />
+                  <p className="text-emerald-600 font-semibold text-sm">
                     {c.scanQR}
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    Add QR code image to: /public/images/payment-qr.jpg
                   </p>
                 </div>
               </div>
@@ -143,7 +143,7 @@ Bank Branch: ${accountDetails.bankBranch}`;
               {/* Copy Phone Button */}
               <button
                 onClick={copyPhoneNumber}
-                className={`w-full py-3 px-4 rounded-xl font-semibold text-base transition-all duration-300 flex items-center justify-center gap-2 ${
+                className={`w-full py-2.5 px-4 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2 ${
                   copiedPhone
                     ? "bg-green-500 text-white"
                     : "bg-emerald-600 text-white hover:bg-emerald-700 active:scale-95"
@@ -165,27 +165,25 @@ Bank Branch: ${accountDetails.bankBranch}`;
           </div>
 
           {/* RIGHT SECTION - Bank Details */}
-          <div className="bg-white/90 backdrop-blur-md rounded-3xl p-5 md:p-8 shadow-2xl border-2 border-teal-200 hover:shadow-3xl transition-all duration-300 h-full flex flex-col">
-            <div className="text-center mb-3 shrink-0">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-full mb-3 mx-auto">
-                <Building2 className="w-8 h-8 text-teal-600" />
+          <div className="bg-white/90 backdrop-blur-md rounded-xl p-5 shadow-lg border border-teal-200 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+            <div className="text-center mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-teal-100 rounded-full mb-3 mx-auto">
+                <Building2 className="w-6 h-6 text-teal-600" />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-teal-700 mb-1">
+              <h3 className="text-lg md:text-xl font-bold text-teal-700">
                 {c.bankDetails}
               </h3>
             </div>
 
-            {/* Bank Details Cards */}
-            <div className="space-y-2 mb-4 grow flex flex-col justify-center">
+            {/* Bank Details - Enlarged and centered */}
+            <div className="space-y-2 mb-4 flex-grow flex flex-col justify-center">
               {/* Account Name */}
-              <div className="bg-teal-50 rounded-xl p-3 hover:bg-teal-100 transition-colors duration-200">
-                <div className="flex items-start gap-3">
-                  <User className="w-4 h-4 text-teal-600 mt-1 shrink-0" />
-                  <div className="flex-1">
-                    <p className="text-xs text-gray-600 mb-0.5">
-                      {c.accountName}
-                    </p>
-                    <p className="text-sm md:text-base font-bold text-teal-700 wrap-break-word">
+              <div className="bg-teal-50 rounded-lg p-2.5 hover:bg-teal-100 transition-colors">
+                <div className="flex items-center gap-2.5">
+                  <User className="w-4 h-4 text-teal-600 shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-gray-500 mb-0.5">{c.accountName}</p>
+                    <p className="text-s font-semibold text-teal-700 break-words">
                       {accountDetails.accountName}
                     </p>
                   </div>
@@ -193,40 +191,38 @@ Bank Branch: ${accountDetails.bankBranch}`;
               </div>
 
               {/* Account Number */}
-              <div className="bg-teal-50 rounded-xl p-3 hover:bg-teal-100 transition-colors duration-200">
-                <div className="flex items-start gap-3">
-                  <Hash className="w-4 h-4 text-teal-600 mt-1 shrink-0" />
-                  <div className="flex-1">
-                    <p className="text-xs text-gray-600 mb-0.5">
-                      {c.accountNumber}
-                    </p>
-                    <p className="text-sm md:text-base font-bold text-teal-700">
-                      {accountDetails.accountNumber || "Contact for details"}
+              <div className="bg-teal-50 rounded-lg p-2.5 hover:bg-teal-100 transition-colors">
+                <div className="flex items-center gap-2.5">
+                  <Hash className="w-4 h-4 text-teal-600 shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-gray-500 mb-0.5">{c.accountNumber}</p>
+                    <p className="text-s font-semibold text-teal-700">
+                      {accountDetails.accountNumber}
                     </p>
                   </div>
                 </div>
               </div>
 
               {/* IFSC Code */}
-              <div className="bg-teal-50 rounded-xl p-3 hover:bg-teal-100 transition-colors duration-200">
-                <div className="flex items-start gap-3">
-                  <Hash className="w-4 h-4 text-teal-600 mt-1 shrink-0" />
-                  <div className="flex-1">
-                    <p className="text-xs text-gray-600 mb-0.5">{c.ifscCode}</p>
-                    <p className="text-sm md:text-base font-bold text-teal-700">
-                      {accountDetails.ifscCode || "Contact for details"}
+              <div className="bg-teal-50 rounded-lg p-2.5 hover:bg-teal-100 transition-colors">
+                <div className="flex items-center gap-2.5">
+                  <Hash className="w-4 h-4 text-teal-600 shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-gray-500 mb-0.5">{c.ifscCode}</p>
+                    <p className="text-s font-semibold text-teal-700">
+                      {accountDetails.ifscCode}
                     </p>
                   </div>
                 </div>
               </div>
 
               {/* Bank Name */}
-              <div className="bg-teal-50 rounded-xl p-3 hover:bg-teal-100 transition-colors duration-200">
-                <div className="flex items-start gap-3">
-                  <Building2 className="w-4 h-4 text-teal-600 mt-1 shrink-0" />
-                  <div className="flex-1">
-                    <p className="text-xs text-gray-600 mb-0.5">{c.bankName}</p>
-                    <p className="text-sm md:text-base font-bold text-teal-700">
+              <div className="bg-teal-50 rounded-lg p-2.5 hover:bg-teal-100 transition-colors">
+                <div className="flex items-center gap-2.5">
+                  <Building2 className="w-4 h-4 text-teal-600 shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-gray-500 mb-0.5">{c.bankName}</p>
+                    <p className="text-s font-semibold text-teal-700">
                       {accountDetails.bankName}
                     </p>
                   </div>
@@ -234,15 +230,39 @@ Bank Branch: ${accountDetails.bankBranch}`;
               </div>
 
               {/* Bank Branch */}
-              <div className="bg-teal-50 rounded-xl p-3 hover:bg-teal-100 transition-colors duration-200">
-                <div className="flex items-start gap-3">
-                  <Building2 className="w-4 h-4 text-teal-600 mt-1 shrink-0" />
-                  <div className="flex-1">
-                    <p className="text-xs text-gray-600 mb-0.5">
-                      {c.bankBranch}
-                    </p>
-                    <p className="text-sm md:text-base font-bold text-teal-700">
+              <div className="bg-teal-50 rounded-lg p-2.5 hover:bg-teal-100 transition-colors">
+                <div className="flex items-center gap-2.5">
+                  <Building2 className="w-4 h-4 text-teal-600 shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-gray-500 mb-0.5">{c.bankBranch}</p>
+                    <p className="text-s font-semibold text-teal-700">
                       {accountDetails.bankBranch}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Account Type */}
+              <div className="bg-teal-50 rounded-lg p-2.5 hover:bg-teal-100 transition-colors">
+                <div className="flex items-center gap-2.5">
+                  <CreditCard className="w-4 h-4 text-teal-600 shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-gray-500 mb-0.5">{c.accountType}</p>
+                    <p className="text-s font-semibold text-teal-700">
+                      {accountDetails.accountType}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Virtual Payment Address */}
+              <div className="bg-teal-50 rounded-lg p-2.5 hover:bg-teal-100 transition-colors">
+                <div className="flex items-center gap-2.5">
+                  <User className="w-4 h-4 text-teal-600 shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-gray-500 mb-0.5">{c.vpa}</p>
+                    <p className="text-s font-semibold text-teal-700 break-all">
+                      {accountDetails.vpa}
                     </p>
                   </div>
                 </div>
@@ -252,7 +272,7 @@ Bank Branch: ${accountDetails.bankBranch}`;
             {/* Copy Bank Details Button */}
             <button
               onClick={copyBankDetails}
-              className={`w-full py-3 px-4 rounded-xl font-semibold text-base transition-all duration-300 flex items-center justify-center gap-2 ${
+              className={`w-full py-2.5 px-4 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2 ${
                 copiedBank
                   ? "bg-green-500 text-white"
                   : "bg-teal-600 text-white hover:bg-teal-700 active:scale-95"

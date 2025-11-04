@@ -18,24 +18,28 @@ const HeroSlider = () => {
   }, [slideImages.length]);
 
   return (
-    <section className="w-full h-screen relative overflow-hidden">
+    <section className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-screen overflow-hidden">
       {/* Image Slides */}
       {slideImages.map((image, index) => (
-        <img
+        <div
           key={index}
-          src={image}
-          alt={`Ayurvedic treatment scene ${index + 1}`}
-          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${
+          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
             index === currentSlide ? "opacity-100" : "opacity-0"
           }`}
-        />
+        >
+          <img
+            src={image}
+            alt={`Ayurvedic treatment scene ${index + 1}`}
+            className="w-full h-full object-cover"
+          />
+        </div>
       ))}
 
       {/* Subtle Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
 
       {/* Slide Indicators */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
+      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
         {slideImages.map((_, index) => (
           <button
             key={index}
