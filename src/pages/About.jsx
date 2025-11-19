@@ -238,7 +238,7 @@ const About = () => {
                       <img
                         src="/images/profileimg.jpg"
                         alt={c.name}
-                        className="w-full h-full object-cover rounded-3xl shadow-2xl transition-transform duration-500 scale-110 group-hover:scale-[1.15]"
+                        className="w-full h-full object-cover rounded-3xl shadow-2xl transition-transform duration-500 group-hover:scale-115 scale-110"
                       />
                       {/* Overlay Gradient on Hover */}
                       <div className="absolute inset-0 bg-linear-to-t from-emerald-900/0 via-transparent to-emerald-600/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl"></div>

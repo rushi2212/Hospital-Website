@@ -135,7 +135,7 @@ const PostersGallery = () => {
             {/* Close Button */}
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 bg-red-500 hover:bg-red-600 text-white p-2.5 rounded-full transition-colors duration-200 shadow-lg"
+              className="absolute top-4 right-4 bg-transparent hover:bg-black/10 text-black p-2.5 rounded-full transition-colors duration-200 shadow-lg border-2 border-black"
               aria-label="Close"
             >
               <X className="w-6 h-6" />
