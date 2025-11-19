@@ -211,7 +211,7 @@ const About = () => {
             <div className="space-y-6 flex flex-col h-full">
               {/* Profile Image - Creative Enhanced Display */}
               <div className="flex justify-center grow items-center overflow-hidden">
-                <div className="relative w-full max-w-sm md:max-w-md mx-auto">
+                <div className="relative w-90vw max-w-sm md:max-w-md mx-auto">
                   {/* Animated Background Gradient Circles */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 md:w-32 md:h-32 bg-emerald-300 rounded-full blur-3xl opacity-20 animate-pulse"></div>
                   <div
@@ -238,7 +238,7 @@ const About = () => {
                       <img
                         src="/images/profileimg.jpg"
                         alt={c.name}
-                        className="w-full h-full object-cover rounded-3xl shadow-2xl transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-cover rounded-3xl shadow-2xl transition-transform duration-500 scale-110 group-hover:scale-[1.15]"
                       />
                       {/* Overlay Gradient on Hover */}
                       <div className="absolute inset-0 bg-linear-to-t from-emerald-900/0 via-transparent to-emerald-600/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl"></div>

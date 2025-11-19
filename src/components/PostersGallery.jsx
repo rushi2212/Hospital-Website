@@ -11,12 +11,10 @@ const PostersGallery = () => {
       ? {
           title: "आमचे पोस्टर्स",
           subtitle: "संपूर्ण आकार पाहण्यासाठी कोणत्याही प्रतिमेवर क्लिक करा",
-          closeHint: "बंद करण्यासाठी बाहेर क्लिक करा किंवा X दाबा",
         }
       : {
           title: "Our Posters",
           subtitle: "Click on any image to view in full size",
-          closeHint: "Click outside or press X to close",
         };
 
   // All posters including main image
@@ -142,11 +140,6 @@ const PostersGallery = () => {
             >
               <X className="w-6 h-6" />
             </button>
-
-            {/* Close hint */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-lg text-sm">
-              {content.closeHint}
-            </div>
           </div>
         </div>
       )}

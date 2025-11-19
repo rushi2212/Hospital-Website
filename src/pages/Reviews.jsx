@@ -84,49 +84,49 @@ const Reviews = () => {
             {
               name: "दिनेश देशमुख",
               image:
-                "https://api.dicebear.com/7.x/avataaars/svg?seed=dinesh&expression=smile",
+                "https://img.freepik.com/premium-photo/web-developer-digital-avatar-generative-ai_934475-9345.jpg",
               text: "डॉ. अनुराधा देशमुखांच्या कौशल्याने मी पूर्णपणे मोहित झालो! ५ वर्षे कटू सायाटिका वेदनेमुळे त्रस्त होऊन मी शेवटचा प्रयत्न म्हणून डॉ. अनुराधा देशमुखांकडे गेलो. त्यांचे सखोल विश्लेषण आणि व्यक्तिगत उपचारामुळे माझे वेदन नाटकीयरित्या कमी झाले - १० मधून १ किंवा २ पर्यंत! एक सल्ला पुरेसा होता. तीव्र वेदनामुक्तीसाठी अत्यंत शिफारस करते. धन्यवाद, डॉ. अनुराधा देशमुख!",
             },
             {
               name: "आदेश बोरहडे",
               image:
-                "https://api.dicebear.com/7.x/avataaars/svg?seed=adesh&expression=smile",
+                "https://img.freepik.com/premium-photo/memoji-emoji-handsome-smiling-man-white-background_826801-7006.jpg",
               text: "डॉक्टर खरोखरच छान होती आणि छान सल्ला दिला. डॉक्टरचे परिणाम अत्यंत उत्कृष्ट आहेत.",
             },
             {
               name: "श्वेता वासु",
               image:
-                "https://api.dicebear.com/7.x/avataaars/svg?seed=shweta&expression=smile",
+                "https://img.freepik.com/photos-premium/memoji-belle-fille-femme-fond-blanc-emoji_826801-6868.jpg",
               text: "सर्वप्रथम मी तिला ५ ताऱ्यापेक्षा जास्त रेटिंग देऊ शकलो असते. ती अनंत तारकांच्या योग्य आहे. ती आमच्या जीवनात एक देवदूत आहे. ती अत्यंत मैत्रीपूर्ण डॉक्टर आणि मी पाहिलेली सर्वोत्तम डॉक्टरांपैकी एक आहे. सर्व चिंता ऐकते आणि सर्वकाही समजण्यायोग्य भाषेत समजावून सांगते. ती अत्यंत प्रामाणिक आहे, रुग्णांसाठी करुणामय आणि महान विनम्रतेने भरलेली आहे! उत्तम डॉक्टर आणि उत्तम उपचार, स्टाफ देखील छान आहे. तुम्ही प्रदान केलेल्या असाधारण सहायतेबद्दल मी कृतज्ञ आहे. धन्यवाद रुग्ण काळजीसाठी तुमच्या निरंतर समर्पणासाठी. मी सर्वांना तिची शिफारस करते.",
             },
             {
-              name: "गीता पाटील",
+              name: "गीता उमेश",
               image:
-                "https://api.dicebear.com/7.x/avataaars/svg?seed=geeta&expression=smile",
+                "https://tse1.mm.bing.net/th/id/OIP.T0SKPJIWxic6C9Vd9eUA5gHaHa?w=996&h=996&rs=1&pid=ImgDetMain&o=7&rm=3",
               text: "डॉ. अनुराधा मॅम अत्यंत मैत्रीपूर्ण आहेत आणि शांतीपूर्वक आमच्या समस्यांना ऐकतात. मी पंचकर्म उपचार बस्ती ८ दिवस केली आहे. आता मी अत्यंत आरामदायक अनुभव करत आहे. अत्यंत छान अनुभव. धन्यवाद मॅम.",
             },
             {
               name: "ज्योती चव्हाण",
               image:
-                "https://api.dicebear.com/7.x/avataaars/svg?seed=jyoti&expression=smile",
+                "https://img.freepik.com/premium-photo/3d-portraits-happy-people-white-background-cartoon-characters-women-girl-vector-illustration_623919-4957.jpg?w=2000",
               text: "मी प्रसवानंतर केसांचे गिरणे समस्येसाठी डॉक्टरांकडे गेलो. मला मोठ्या प्रमाणात केस गळत आहेत. मी बरेच उपचार केले पण कोणताही परिणाम नाही. जेव्हा मी डॉक्टर अनुराधाकडे गेलो तेव्हा मी उपचारांसाठी माझा विश्वास पूर्णपणे गमावला, पण तिने माझा विश्वास परत केला. अत्यंत छान आणि शांतीपूर्वक ती मेरे सल्लामसलतीची केली. माझा उपचार सुरू केला आता मी तिच्या उपचारांचा आनंद घेत आहे. केस गिरणे समस्या नाही तसेच माझ्या केसांची रचना सुधारली आहे. धन्यवाद डॉक्टर. अत्यंत शिफारस करते.",
             },
             {
               name: "एन मोहोड",
               image:
-                "https://api.dicebear.com/7.x/avataaars/svg?seed=mohod&expression=smile",
+                "https://img.freepik.com/premium-photo/3d-avatar-cartoon-character_113255-91871.jpg",
               text: "अत्यंत अनुभवी आणि छान मानसिकतेची डॉक्टर.....",
             },
             {
-              name: "गजानन देशमुख",
+              name: "गजानन साहेबराव",
               image:
-                "https://api.dicebear.com/7.x/avataaars/svg?seed=gajanan&expression=smile",
+                "https://tse3.mm.bing.net/th/id/OIP.G0RgMZgWDY-BubhoSVcj0wHaHa?w=1380&h=1380&rs=1&pid=ImgDetMain&o=7&rm=3",
               text: "सर्वोत्तम आयुर्वेद डॉक्टर, या लॉकडाउनवी काळात वृद्ध लोकांना खूप कष्ट होत आहेत, घरी बसले आहेत त्यांना पायांद्ये सूज समस्या येत आहे. डॉब. अनुराधा यांनी योग्य आहार आण औषध दिले, ते खरोखर काम करते आहे लॉकडाउनवी काळात आण माझ्या पित्यांडवी पूर्णपणे बरे ङले. अतिशय धन्यवाद. आम्लपित्त हा लॉकडाउनवी काळात एक मोठी समस्या आहे. डॉक्टरांनी योग्य आहार आण औषध दिले आण मला राहत मळली. खरोखरच हे सर्वोत्तम आहे आण आम्ही आम्लपित्त नियंत्रित केले आहे. अतिशय धन्यवाड.",
             },
             {
-              name: "प्रीती सोनार",
+              name: "प्रीती",
               image:
-                "https://api.dicebear.com/7.x/avataaars/svg?seed=preeti&expression=smile",
+                "https://img.freepik.com/premium-photo/3d-portraits-happy-people-white-background-cartoon-characters-women-girl-vector-illustration_623919-4816.jpg",
               text: "सर्वोत्तम आयुर्वेद डॉक्टर, मी १३ वर्षे आहे, मला मागील १ वर्षत PCOD आण PCOS समस्या होत आहे. या १ वर्षांत मी अनेक डॉक्टरांकडे गेलो पण मला कोणताही सकारत्मक प्रतिक्रिया आण परिणाम मळले नाहीत. मी अत्यंत निराश, उदास होउन गेलो, त्या परिस्थीतीत मला काय करायचे हे समजले नाही. तेव्ही मी अनुराधा मॅरला भेतलो आण माझ्या समस्यांकुरुं सांगितले आण जा पड्धतीने ती मेरे सल्लामसलतीक केशली आण माझ्या समस्या समडते हे अत्यंत आश्चर्यकारक आहे, तिच्या सल्ल्यानंतर मी माझा निराशावाद, नकारात्मक विचार पूर्णपणे गमवला. मी २ महीने उपशिषण केले आण PCOD समस्येत द्रुत परिणाम दिसले. आता मला कोणताही मासिक समस्या नाही. आण मागील २ महीन्यांत माझे मासिक पाळी साधारण आण नल आहे. अतिशय धन्यवाड.....",
             },
           ],
@@ -139,49 +139,49 @@ const Reviews = () => {
             {
               name: "Dinesh Deshmukh",
               image:
-                "https://api.dicebear.com/7.x/avataaars/svg?seed=dinesh&expression=smile",
+                "https://img.freepik.com/premium-photo/web-developer-digital-avatar-generative-ai_934475-9345.jpg",
               text: "I'm blown away by Dr. Anuradhaa Deshmukh's expertise! After suffering from excruciating sciatica pain for 5 years, I consulted Dr. Anuradhaa Deshmukh as a last resort. With a thorough analysis and personalized treatment, I'm thrilled to report that the pain has reduced dramatically - from a 10 to a 1 or 2! A single consultation was all it took. Highly recommended for natural and effective relief from chronic pain. Thank you, Dr. Anuradhaa Deshmukh 🙏💯",
             },
             {
               name: "Adesh Borhade",
               image:
-                "https://api.dicebear.com/7.x/avataaars/svg?seed=adesh&expression=smile",
+                "https://img.freepik.com/premium-photo/memoji-emoji-handsome-smiling-man-white-background_826801-7006.jpg",
               text: "Doctor was really nice and give good advice. And results of doctor is absolutely fantastic.",
             },
             {
               name: "Shweta Vasu",
               image:
-                "https://api.dicebear.com/7.x/avataaars/svg?seed=shweta&expression=smile",
+                "https://img.freepik.com/photos-premium/memoji-belle-fille-femme-fond-blanc-emoji_826801-6868.jpg",
               text: "First of all, I wish I could give her more than 5 stars. She is worth infinite stars⭐. She is an angel in our life. She is a very friendly doctor & one of the finest doctors I have seen. Hears all your concerns and explains you everything in understandable terms. She is very honest, full of compassion for her patients with great humility! Great doctor and great treatment, And Staff is also good. I am grateful for the exceptional support you provided during my time at your hospital. Thank you for your unwavering dedication to patient care. I highly recommend her to everyone.",
             },
             {
-              name: "Geeta Patil",
+              name: "Geeta Umesh",
               image:
-                "https://api.dicebear.com/7.x/avataaars/svg?seed=geeta&expression=smile",
+                "https://tse1.mm.bing.net/th/id/OIP.T0SKPJIWxic6C9Vd9eUA5gHaHa?w=996&h=996&rs=1&pid=ImgDetMain&o=7&rm=3",
               text: "Dr. Anuradha mam is very friendly and calmly listen our problems. I have undergone panchkarma treatment basti for 8 days. Now I am feeling very much relaxed. Very nice experience. Thank you mam.",
             },
             {
               name: "Jyoti Chavan",
               image:
-                "https://api.dicebear.com/7.x/avataaars/svg?seed=jyoti&expression=smile",
+                "https://img.freepik.com/premium-photo/3d-portraits-happy-people-white-background-cartoon-characters-women-girl-vector-illustration_623919-4957.jpg?w=2000",
               text: "I visited doctor for my hair fall problem. I am facing lots of hair loss after delivery. I did lots of treatment but no results. When I visited to doctor anuradha I completely lost my faith for treatments, but she regaines my trust. Very nice and calmly she consult me. Started with my treatment now I am happy with her treatment. Not having hair loss problem also due to her oil therapies structure of my hairs are also improved. Thanks doctor. Highly recommended",
             },
             {
               name: "N Mohod",
               image:
-                "https://api.dicebear.com/7.x/avataaars/svg?seed=mohod&expression=smile",
+                "https://img.freepik.com/premium-photo/3d-avatar-cartoon-character_113255-91871.jpg",
               text: "Very well experienced and good nature doctor.....",
             },
             {
               name: "Gajanan Deshmukh",
               image:
-                "https://api.dicebear.com/7.x/avataaars/svg?seed=gajanan&expression=smile",
+                "https://tse3.mm.bing.net/th/id/OIP.G0RgMZgWDY-BubhoSVcj0wHaHa?w=1380&h=1380&rs=1&pid=ImgDetMain&o=7&rm=3",
               text: "Best Ayurveda Doctor, during this lockdown old age people suffer lot, no movement sitting at home they face problem swell up at leg. Dr. Anuradha gave proper diet and medicine, it's really works during this lockdown and my father is really recovered from this. Thank u so much. Acidity is very big problem during this lockdown. Dr. gave proper diet and me find. Really it's best and we have controlled acidity. Thank u so much.",
             },
             {
-              name: "Priti Sonar",
+              name: "Priti",
               image:
-                "https://api.dicebear.com/7.x/avataaars/svg?seed=priti&expression=smile",
+                "https://img.freepik.com/premium-photo/3d-portraits-happy-people-white-background-cartoon-characters-women-girl-vector-illustration_623919-4816.jpg",
               text: "BEST AYURVEDA DOCTOR, i m 21 years old, i m suffering from pcod, pcos problem from last 2 year's, in this 2 years, i was going so many doctors for treatment but I don't have any positive response and result. I m so much frustrated, depressed in that situation I don't understand what should I do?? Then I meet anuradha mam talking about my problems and the way she talking with me and understand my problems is so amazing, after talking to her i understand my frustration, negative thinking actually gone..I started treatment for 6 months I see quick result in my pcod problem.. now I don't have any periods problem..And last 5 months my periods is normal and regular... Thank you so much.....",
             },
           ],
