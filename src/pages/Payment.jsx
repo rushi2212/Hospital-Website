@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Copy, Check, CreditCard, Building2, Hash, User } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import PostersGallery from "../components/PostersGallery";
 
 const Payment = () => {
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [copiedBank, setCopiedBank] = useState(false);
-  const [language] = useState("en"); // Change to "mr" for Marathi
+  const { i18n } = useTranslation();
+
+  const language = i18n.language === "mr" ? "mr" : "en";
 
   const phoneNumber = "9920494821";
   const accountDetails = {
@@ -82,6 +85,8 @@ Virtual Payment Address: ${accountDetails.vpa}`;
 
   return (
     <>
+      <PostersGallery />
+
       <section
         id="payment"
         className="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 py-10 md:py-14"
@@ -308,8 +313,6 @@ Virtual Payment Address: ${accountDetails.vpa}`;
           </div>
         </div>
       </section>
-
-      <PostersGallery />
     </>
   );
 };

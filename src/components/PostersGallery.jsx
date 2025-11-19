@@ -1,8 +1,23 @@
 import React, { useState } from "react";
 import { X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const PostersGallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const { i18n } = useTranslation();
+
+  const content =
+    i18n.language === "mr"
+      ? {
+          title: "आमचे पोस्टर्स",
+          subtitle: "संपूर्ण आकार पाहण्यासाठी कोणत्याही प्रतिमेवर क्लिक करा",
+          closeHint: "बंद करण्यासाठी बाहेर क्लिक करा किंवा X दाबा",
+        }
+      : {
+          title: "Our Posters",
+          subtitle: "Click on any image to view in full size",
+          closeHint: "Click outside or press X to close",
+        };
 
   // All posters including main image
   const allPosters = [
@@ -32,10 +47,10 @@ const PostersGallery = () => {
         {/* Title */}
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-emerald-700 mb-3">
-            Our Posters
+            {content.title}
           </h2>
           <p className="text-base md:text-lg text-gray-600">
-            Click on any image to view in full size
+            {content.subtitle}
           </p>
         </div>
 
@@ -130,7 +145,7 @@ const PostersGallery = () => {
 
             {/* Close hint */}
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-lg text-sm">
-              Click outside or press X to close
+              {content.closeHint}
             </div>
           </div>
         </div>
