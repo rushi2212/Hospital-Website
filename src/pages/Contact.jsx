@@ -1,8 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const Contact = () => {
   const { i18n } = useTranslation();
+  const [formData, setFormData] = useState({
+    name: "",
+    mobile: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "1378e978-2173-4f89-b517-a99fafefdd75", // Get free key from https://web3forms.com
+          name: formData.name,
+          phone: formData.mobile,
+          email: formData.email,
+          message: formData.message,
+          to: "rushikesh220703@gmail.com",
+          subject: `Contact Form Submission from ${formData.name}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus("success");
+        setFormData({ name: "", mobile: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+
+      setTimeout(() => setStatus(""), 3000);
+    } catch (error) {
+      console.error("Email sending failed:", error);
+      setStatus("error");
+      setTimeout(() => setStatus(""), 3000);
+    }
+  };
 
   const c =
     i18n.language === "mr"
@@ -41,7 +94,10 @@ const Contact = () => {
 
         {/* Contact Form */}
         <div className="max-w-4xl mx-auto bg-white/80 backdrop-blur-md shadow-xl border border-emerald-100 p-5 md:p-10 rounded-2xl">
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <form
+            onSubmit={handleSubmit}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
             {/* Left side: Name, Mobile, Email */}
             <div className="space-y-5">
               {/* Name */}
@@ -56,6 +112,8 @@ const Contact = () => {
                   type="text"
                   id="name"
                   name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="w-full border border-emerald-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 rounded-lg px-4 py-2.5 text-sm md:text-base text-gray-700 outline-none transition-all duration-200 hover:border-emerald-300"
                   placeholder={c.name}
                   required
@@ -74,6 +132,8 @@ const Contact = () => {
                   type="tel"
                   id="mobile"
                   name="mobile"
+                  value={formData.mobile}
+                  onChange={handleChange}
                   className="w-full border border-emerald-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 rounded-lg px-4 py-2.5 text-sm md:text-base text-gray-700 outline-none transition-all duration-200 hover:border-emerald-300"
                   placeholder={c.mobile}
                   required
@@ -92,6 +152,8 @@ const Contact = () => {
                   type="email"
                   id="email"
                   name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full border border-emerald-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 rounded-lg px-4 py-2.5 text-sm md:text-base text-gray-700 outline-none transition-all duration-200 hover:border-emerald-300"
                   placeholder={c.email}
                   required
@@ -110,18 +172,43 @@ const Contact = () => {
               <textarea
                 id="message"
                 name="message"
+                value={formData.message}
+                onChange={handleChange}
                 rows="5"
-                className="w-full border border-emerald-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 rounded-lg px-4 py-2.5 text-sm md:text-base text-gray-700 outline-none resize-none flex-grow mb-4 transition-all duration-200 hover:border-emerald-300"
+                className="w-full border border-emerald-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 rounded-lg px-4 py-2.5 text-sm md:text-base text-gray-700 outline-none resize-none grow mb-4 transition-all duration-200 hover:border-emerald-300"
                 placeholder={c.message}
                 required
               ></textarea>
 
               <button
                 type="submit"
-                className="bg-linear-to-r from-emerald-500 to-teal-500 text-white font-semibold text-sm md:text-base px-6 md:px-8 py-3 rounded-lg shadow-md hover:from-emerald-600 hover:to-teal-600 active:scale-95 transition-all duration-300 w-full transform hover:shadow-lg"
+                disabled={status === "sending"}
+                className="bg-linear-to-r from-emerald-500 to-teal-500 text-white font-semibold text-sm md:text-base px-6 md:px-8 py-3 rounded-lg shadow-md hover:from-emerald-600 hover:to-teal-600 active:scale-95 transition-all duration-300 w-full transform hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {c.button}
+                {status === "sending"
+                  ? c.language === "mr"
+                    ? "पाठवत आहे..."
+                    : "Sending..."
+                  : c.button}
               </button>
+
+              {/* Success Message */}
+              {status === "success" && (
+                <p className="text-emerald-600 font-semibold text-sm md:text-base text-center mt-3">
+                  {c.language === "mr"
+                    ? "धन्यवाद! आपला संदेश पाठवला आहे."
+                    : "Thank you! Your message has been sent."}
+                </p>
+              )}
+
+              {/* Error Message */}
+              {status === "error" && (
+                <p className="text-red-600 font-semibold text-sm md:text-base text-center mt-3">
+                  {c.language === "mr"
+                    ? "माफ करा, संदेश पाठवण्यात अयशस्वी. कृपया पुन्हा प्रयत्न करा."
+                    : "Sorry, failed to send message. Please try again."}
+                </p>
+              )}
             </div>
           </form>
         </div>
