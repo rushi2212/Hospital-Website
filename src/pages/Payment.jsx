@@ -131,7 +131,7 @@ Virtual Payment Address: ${accountDetails.vpa}`;
                 {/* QR Code - Grows to fill space */}
                 <div className="bg-gradient-to-br from-emerald-100 to-teal-100 rounded-lg p-3 mb-3 border border-emerald-300 flex-grow flex items-center justify-center">
                   <img
-                    src="https://admin.softspectra.co/storage/qr/131/1743237889.jpg"
+                    src="/images/payment.jpg"
                     alt="Payment QR Code"
                     className="w-full max-w-[240px] h-auto rounded shadow-sm"
                     onError={(e) => {
