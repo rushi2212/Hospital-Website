@@ -35,7 +35,7 @@ const Contact = () => {
           phone: formData.mobile,
           email: formData.email,
           message: formData.message,
-          to: "rushikesh220703@gmail.com",
+          to: "anuradhadeshmukh19@gmail.com",
           subject: `Contact Form Submission from ${formData.name}`,
         }),
       });
