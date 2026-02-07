@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Copy, Check, CreditCard, Building2, Hash, User } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import PostersGallery from "../components/PostersGallery";
+import DiagnosisResults from "../components/DiagnosisResults";
 
 const Payment = () => {
   const [copiedPhone, setCopiedPhone] = useState(false);
@@ -86,6 +87,7 @@ Virtual Payment Address: ${accountDetails.vpa}`;
   return (
     <>
       <PostersGallery />
+      <DiagnosisResults />
 
       <section
         id="payment"
