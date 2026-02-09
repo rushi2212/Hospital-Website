@@ -190,7 +190,7 @@ const ProductsServices = ({ language = "en" }) => {
               id: 10,
               title: "सुवर्णप्राशन",
               image:
-                "https://tse2.mm.bing.net/th/id/OIP.r3jaKWABiKoU6JehRNvdrgAAAA?pid=Api&P=0&h=180",
+                "https://tse1.mm.bing.net/th/id/OIP.04ucuO_tNluM3S9V5th6GQHaD2?rs=1&pid=ImgDetMain&o=7&rm=3",
               icon: Pill,
               benefitsTitle:
                 "सुवर्णप्राशन (0 ते 16 वर्षांपर्यंत बालकांसाठी) फायदे:",
@@ -369,7 +369,7 @@ const ProductsServices = ({ language = "en" }) => {
               id: 10,
               title: "Suvarna Prashana",
               image:
-                "https://tse2.mm.bing.net/th/id/OIP.r3jaKWABiKoU6JehRNvdrgAAAA?pid=Api&P=0&h=180",
+                "https://tse1.mm.bing.net/th/id/OIP.04ucuO_tNluM3S9V5th6GQHaD2?rs=1&pid=ImgDetMain&o=7&rm=3",
               icon: Pill,
               benefitsTitle:
                 "Benefits of Suvarna Prashana (For children 0 to 16 years):",
