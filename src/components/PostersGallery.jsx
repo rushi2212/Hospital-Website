@@ -17,27 +17,18 @@ const PostersGallery = () => {
           subtitle: "Click on any image to view in full size",
         };
 
-  // All posters including main image
-  const allPosters = [
-    "/posters/main-img.jpg",
-    "/posters/img1.jpg",
-    "/posters/img2.jpg",
-    "/posters/img3.jpg",
-    "/posters/img4.jpg",
-    "/posters/img5.jpg",
-    "/posters/img6.jpg",
-    "/posters/img7.jpg",
-    "/posters/img8.jpg",
-    "/posters/img9.jpg",
-    "/posters/img10.jpg",
-    "/posters/img11.jpg",
-    "/posters/img12.jpg",
-    "/posters/img13.jpg",
-    "/posters/img14.jpg",
-    "/posters/img15.jpg",
-    "/posters/img16.jpg",
-    "/posters/img17.jpg",
-  ];
+  const isMarathi = i18n.language === "mr";
+
+  // Dynamically pick poster set based on selected language
+  const mainPoster = isMarathi ? "/posters/1mh.png" : "/posters/1me.png";
+
+  const otherPosters = Array.from({ length: 17 }, (_, index) => {
+    const posterNumber = index + 1;
+    const suffix = isMarathi ? "h" : "e";
+    return `/posters/${posterNumber}${suffix}.png`;
+  });
+
+  const allPosters = [mainPoster, ...otherPosters];
 
   return (
     <section className="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 py-12 md:py-16">
@@ -53,16 +44,16 @@ const PostersGallery = () => {
         </div>
 
         {/* Posters Grid - Mobile: 2 cols, Desktop: 5 cols */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-3 md:auto-rows-[280px]">
           {/* Main Image - Full width on mobile, 2x2 on desktop */}
           <div
-            className="relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group col-span-2 md:row-span-2 h-[280px] md:h-[572px] p-2"
+            className="relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group col-span-2 md:row-span-3 h-[420px] md:h-full p-2"
             onClick={() => setSelectedImage(allPosters[0])}
           >
             <img
               src={allPosters[0]}
               alt="Main Poster"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg"
+              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 rounded-lg"
               onError={(e) =>
                 (e.target.src = "https://via.placeholder.com/350x656?text=Main")
               }
