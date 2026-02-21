@@ -28,7 +28,7 @@ const About = () => {
           email: "anuradhadeshmukh19@gmail.com",
           website:
             "https://softspectra.co/webapp/dnyanesh-ayurved-and-panchakarma-centre",
-          opdTiming: "10:00 AM TO 1:30PM & 6:00 PM TO 8:30PM",
+          opdTiming: "10:30 AM TO 2:00PM & 5:00 PM TO 8:30PM",
           facilitiesTitle: "उपलब्ध सुविधा :",
           facilities: [
             "स्नेहन, बस्ति, पत्रपोट्टली, स्वेदन, रक्तमोक्षण, षष्ठिक पिंड स्वेद",
@@ -75,7 +75,7 @@ const About = () => {
           email: "anuradhadeshmukh19@gmail.com",
           website:
             "https://softspectra.co/webapp/dnyanesh-ayurved-and-panchakarma-centre",
-          opdTiming: "10:00 AM TO 1:30 PM & 6:00 PM TO 8:30 PM",
+          opdTiming: "10:30 AM TO 2:00PM & 5:00 PM TO 8:30PM",
           facilitiesTitle: "Available Facilities:",
           facilities: [
             "Snehana, Basti, Patrapottali, Swedana, Raktamokshana, Shashtik Pinda Sweda",
